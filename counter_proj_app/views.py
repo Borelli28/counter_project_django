@@ -13,6 +13,10 @@ def index(request):
 
 def destroy(request):
     print('redirected boyyy!')
-    # request.session.clear()
-    print("Destroy: And now counter was reset")
+    if 'counter' in request.session:
+        request.session.clear()
+        print("Destroy: And now counter was reset")
+    else:
+        print(" 'counter' does not exist in session so, it was not reseted ")
+
     return redirect('/')
